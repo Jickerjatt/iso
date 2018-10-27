@@ -19,7 +19,9 @@ let topicController;
   })
 
   api.attachWidgetAction('post-menu', 'clickIso', function() {
-    topicController.send("toggleParticipantUsername", this.attrs.username);
+      topicController.get("model.postStream")
+        .toggleParticipant(this.attrs.username)
+        .then(() => topicController.updateQueryParams);
   })
 }
 
