@@ -1,13 +1,11 @@
 import { withPluginApi } from 'discourse/lib/plugin-api'
 import TopicRoute from 'discourse/routes/topic'
-import ISO from '../lib/iso'
 
 function initializePlugin(api) {
+let topicController;
 
   TopicRoute.on("setupTopicController", function(event) {
-    let controller = event.controller
-    ISO.set('topicController', controller)
-    controller.messageBus.subscribe(`/iso/topics/${controller.model.id}`, (data) => { ISO.callback(data) })
+    topicController = event.controller
   })
 
   api.addPostMenuButton('iso', attrs => {
@@ -20,7 +18,7 @@ function initializePlugin(api) {
   })
 
   api.attachWidgetAction('post-menu', 'clickIso', function() {
-    alert(this.attrs.username);
+    topicController.send("toggleParticipantUsername", this.attrs.username);
   })
 }
 
