@@ -19,9 +19,16 @@ let topicController;
   })
 
   api.attachWidgetAction('post-menu', 'clickIso', function() {
-      topicController.get("model.postStream")
-        .toggleParticipant(this.attrs.username)
-        .then(() => topicController.updateQueryParams);
+      if(topicController.get("model.postStream.hasNoFilters")) {
+        topicController.get("model.postStream")
+          .toggleParticipant(this.attrs.username)
+          .then(() => topicController.updateQueryParams);
+      }
+      else {
+        const postStream = topicController.get("model.postStream");
+        postStream.cancelFilter();
+        postStream.refresh();
+      }
   })
 }
 
