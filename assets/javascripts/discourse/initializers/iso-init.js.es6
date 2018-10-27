@@ -9,10 +9,11 @@ let topicController;
   })
 
   api.addPostMenuButton('iso', attrs => {
+
     return {
       action: 'clickIso',
-      icon: 'smile-o',
-      title: 'ISO',
+      icon: topicController.get("model.postStream.hasNoFilters") ? 'user' : 'users',
+      title: topicController.get("model.postStream.hasNoFilters") ? 'iso.title' : 'unisoed.title',
       position: 'first'
     }
   })
