@@ -28,6 +28,7 @@ let topicController;
         const postStream = topicController.get("model.postStream");
         postStream.cancelFilter();
         postStream.refresh();
+        // TODO: jump to post number from this.attrs (probably)
       }
   })
 }
