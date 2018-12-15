@@ -28,8 +28,11 @@ let topicController;
         const postStream = topicController.get("model.postStream");
         postStream.cancelFilter();
         postStream.refresh();
-        // TODO: jump to post number from this.attrs (probably)
       }
+      // This appears to produce the correct url, but then it jumps back to the top.
+      topicController.send("jumpToPost", this.attrs.post_number);
+      //console.log(this.attrs);
+      //topicController._jumpToPostNumber(this.attrs.post_number);
   })
 }
 
