@@ -22,17 +22,15 @@ let topicController;
       if(topicController.get("model.postStream.hasNoFilters")) {
         topicController.get("model.postStream")
           .toggleParticipant(this.attrs.username)
-          .then(() => topicController.updateQueryParams);
+          .then(() => topicController.updateQueryParams)
+          .then(() => topicController.send("jumpToPost", this.attrs.post_number));
       }
       else {
         const postStream = topicController.get("model.postStream");
         postStream.cancelFilter();
-        postStream.refresh();
+        postStream.refresh()
+          .then(() => topicController.send("jumpToPost", this.attrs.post_number));
       }
-      // This appears to produce the correct url, but then it jumps back to the top.
-      topicController.send("jumpToPost", this.attrs.post_number);
-      //console.log(this.attrs);
-      //topicController._jumpToPostNumber(this.attrs.post_number);
   })
 }
 
