@@ -14,15 +14,15 @@ let topicController;
       action: 'clickIso',
       icon: topicController.get("model.postStream.hasNoFilters") ? 'user' : 'users',
       title: topicController.get("model.postStream.hasNoFilters") ? 'iso.title' : 'unisoed.title',
-      position: 'first'
+      position: 'second'
     }
   })
 
   api.attachWidgetAction('post-menu', 'clickIso', function() {
       if(topicController.get("model.postStream.hasNoFilters")) {
-        topicController.get("model.postStream")
-          .toggleParticipant(this.attrs.username)
-          .then(() => topicController.updateQueryParams)
+        const postStream = topicController.get("model.postStream");
+        postStream.toggleParticipant(this.attrs.username)
+          .then(() => postStream.refresh())
           .then(() => topicController.send("jumpToPost", this.attrs.post_number));
       }
       else {
