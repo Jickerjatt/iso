@@ -14,7 +14,7 @@ let topicController;
       action: 'clickIso',
       icon: topicController.get("model.postStream.hasNoFilters") ? 'user' : 'users',
       title: topicController.get("model.postStream.hasNoFilters") ? 'iso.title' : 'unisoed.title',
-      position: 'second'
+      position: 'first'
     }
   })
 
