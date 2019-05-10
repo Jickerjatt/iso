@@ -23,13 +23,13 @@ let topicController;
         const postStream = topicController.get("model.postStream");
         postStream.toggleParticipant(this.attrs.username)
           .then(() => postStream.refresh())
-          .then(() => topicController.send("jumpToPost", this.attrs.post_number));
+          .then(() => topicController.send("jumpToPostId", this.attrs.id));
       }
       else {
         const postStream = topicController.get("model.postStream");
         postStream.cancelFilter();
         postStream.refresh()
-          .then(() => topicController.send("jumpToPost", this.attrs.post_number));
+          .then(() => topicController.send("jumpToPostId", this.attrs.id));
       }
   })
 }
