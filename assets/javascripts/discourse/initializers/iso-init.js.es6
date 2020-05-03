@@ -4,9 +4,12 @@ import TopicRoute from 'discourse/routes/topic'
 function initializePlugin(api) {
 let topicController;
 
-  TopicRoute.on("setupTopicController", function(event) {
-    topicController = event.controller
-  })
+  TopicRoute.reopen({
+    setupController(controller, model) {
+      this._super(controller, model);
+      topicController = controller;
+    }
+  });
 
   api.addPostMenuButton('iso', attrs => {
 
