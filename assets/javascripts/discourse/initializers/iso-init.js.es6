@@ -1,15 +1,8 @@
 import { withPluginApi } from 'discourse/lib/plugin-api'
 import TopicRoute from 'discourse/routes/topic'
 
-function initializePlugin(api) {
-let topicController;
-
-  TopicRoute.reopen({
-    setupController(controller, model) {
-      this._super(controller, model);
-      topicController = controller;
-    }
-  });
+function initializePlugin(api, container) {
+  const topicController = container.lookup('controller:topic');
 
   api.addPostMenuButton('iso', attrs => {
 
@@ -39,7 +32,7 @@ let topicController;
 
 export default {
   name: 'iso-button',
-  initialize: function() {
-    withPluginApi('0.8.6', api => initializePlugin(api))
+  initialize: function(container) {
+    withPluginApi('0.8.6', api => initializePlugin(api, container))
   }
 }
