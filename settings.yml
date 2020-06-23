@@ -1,9 +1,9 @@
-iso.title:
-  default: "filter by this user''s posts"
+iso_title:
+  default: "filter by this user's posts"
   description:
-    en:  "iso hover text"
-unisoed.title:
+    en:  iso hover text
+unisoed_title:
   default: "view all posts"
   description:
-    en:  "uniso hover text"
+    en:  uniso hover text
 
