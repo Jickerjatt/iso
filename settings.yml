@@ -1,0 +1,9 @@
+iso.title:
+  default: ''
+  description:
+    en:  "filter by this user''s posts"
+unisoed.title:
+  default: ''
+  description:
+    en:  "view all posts"
+
