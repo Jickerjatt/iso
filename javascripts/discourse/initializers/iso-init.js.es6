@@ -9,7 +9,7 @@ function initializePlugin(api, container) {
     return {
       action: 'clickIso',
       icon: topicController.get("model.postStream.hasNoFilters") ? 'user' : 'users',
-      title: topicController.get("model.postStream.hasNoFilters") ? 'iso.title' : 'unisoed.title',
+      title: topicController.get("model.postStream.hasNoFilters") ? 'iso_title' : 'unisoed_title',
       position: 'second'
     }
   })
@@ -36,3 +36,11 @@ export default {
     withPluginApi('0.8.6', api => initializePlugin(api, container))
   }
 }
+
+let translations = I18n.translations[I18n.currentLocale()].js;
+if (!translations) {
+  translations = {};
+}
+
+translations.iso_title=settings.iso_title;
+translations.unisoed_title=settings.unisoed_title
