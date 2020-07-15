@@ -1,5 +1,5 @@
 # iso
-A plugin for Discourse that adds a button to the post menu for isolating a user's posts within a topic (which is reachable on mobile).
+A theme component for Discourse that adds a button to the post menu for isolating a user's posts within a topic (which is reachable on mobile).
 
 
 
