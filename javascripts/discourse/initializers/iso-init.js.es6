@@ -17,7 +17,7 @@ function initializePlugin(api, container) {
   api.attachWidgetAction('post-menu', 'clickIso', function() {
       if(topicController.get("model.postStream.hasNoFilters")) {
         const postStream = topicController.get("model.postStream");
-        postStream.toggleParticipant(this.attrs.username)
+        postStream.filterParticipant(this.attrs.username)
           .then(() => postStream.refresh())
           .then(() => topicController.send("jumpToPostId", this.attrs.id));
       }
